@@ -1,5 +1,12 @@
 package chess;
 
+/**
+ * @author Sean Murphy
+ * @author Ahmed Aboukoura
+ * 
+ */
+
+
 public abstract class Piece {
 	
 	boolean white;

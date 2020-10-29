@@ -1,10 +1,31 @@
 package chess;
 
+/**
+ * @author Sean Murphy
+ * @author Ahmed Aboukoura
+ * 
+ * 
+ * Pawn extends Piece and has functions to initialize and check move validity,
+ * 	and its unique attack validity
+ */
+
 public class Pawn extends Piece{
+	
+	/**
+	 * @param t  allows us to define a pawn of a certain color
+	 */
 	
 	public Pawn(boolean t) {
 		super.white = t;
 	}
+	
+	/**
+	 * Here we check to see if a pawn is perfroming a legal attack, which
+	 *  is forward diagnol (up for white and down for black)
+	 * 
+	 * @param str is formatted x1y1_x2y2
+	 * @return
+	 */
 	
 	public boolean ifAttack(String str) {
 		
@@ -26,6 +47,15 @@ public class Pawn extends Piece{
 		return false;
 	}
 	
+	
+	/**
+	 * 
+	 * legalMove checks the validity of a move in terms of a pieces defined movement,
+	 *  in this case checking a forward move of one or two spots depending on if it moved already
+	 *  
+	 *  note that we check the validity of the move in other ways too, this method ONLY covers movement
+	 * 
+	 */
 	public boolean legalMove(String str) {
 		
 		int x1 = Character.getNumericValue(str.charAt(0));

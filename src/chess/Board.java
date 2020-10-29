@@ -1,5 +1,10 @@
 package chess;
 
+/**
+ * @author Sean Murphy
+ * @author Ahmed Aboukoura
+ * 
+ */
 
 import java.util.*;
 public class Board {
@@ -8,6 +13,12 @@ public class Board {
 	boolean brokeCast;
 	boolean unPromoted;
 	
+	
+	/**
+	 * 
+	 * Create() initializes our board with all of the starting pieces in the right places
+	 * 
+	 */
 	
 	public void create() {
 		for(int i=0;i<8;i++) {
@@ -52,6 +63,11 @@ public class Board {
 		}
 		
 	}
+	
+	/**
+	 * move() takes the inputed string encrypted as x1y1_x2y2 and then moves a piece on the board
+	 * @param str
+	 */
 	
 	public void move(String str) {
 		
@@ -207,10 +223,9 @@ public class Board {
 		
 	}
 	/**
-	 * Checks that the path is clear, no longer have different movements for every
-	 * piece because legalMove() handles that
+	 * Checks that the path is clear and that no pieces are blocking the move
 	 * 
-	 * @param str - this parameter is the input String (move) from the user
+	 * @param str - formatted x1y1_x2y2
 	 * @return returns True if there are piece in between and false if not
 	 */
 	public boolean ifBlocked(String str) {
@@ -307,6 +322,13 @@ public class Board {
 			return seenPiece;
 		}
 
+	/**
+	 * finds the king and returns its position as a formatted string
+	 * 
+	 * @param whiteKing- boolean for being white or black
+	 * @return
+	 */
+	
 	public String findKing(boolean whiteKing) {
 		for(int i=0; i<8; i++) {
 			for(int j =0; j<8; j++) {
@@ -320,11 +342,19 @@ public class Board {
 		return "Didn't find it";
 	}
 	
+	/**
+	 * Checks for checkmate by going to every spot the king can move to, and the spot that its in
+	 * if it is check at every spot, then the king is in checkmate
+	 *  but we need to be very careful about bounds here
+	 * 
+	 * @param kingL - where the king is
+	 * @param whiteKing - white or black boolean
+	 * @return
+	 */
 	
-	
-	public boolean checkMate(String kingLoc, boolean whiteKing) {
-		int y = Character.getNumericValue(kingLoc.charAt(1));
-		int x = Character.getNumericValue(kingLoc.charAt(0));
+	public boolean checkMate(String kingL, boolean whiteKing) {
+		int y = Character.getNumericValue(kingL.charAt(1));
+		int x = Character.getNumericValue(kingL.charAt(0));
 		int xMinus=x-1;
 		boolean hasAMove=false;
 		int xPlus=x+1;
@@ -397,7 +427,15 @@ public class Board {
 	
 	
 	
-	
+	/**
+	 * 
+	 * Checks if a king is in check by any piece in a possibly attacking are
+	 *  checks up/downs and diagnols  plus possible knight spots
+	 *  
+	 * @param kingL - current king position
+	 * @param whiteKing - white or black boolean
+	 * @return
+	 */
 	
 	
 	
@@ -434,6 +472,9 @@ public class Board {
 		return false;
 	}
 	
+	/**
+	 * @return a string that prints as a display of the board
+	 */
 	
 	public String printBoard() {
 		String str ="";

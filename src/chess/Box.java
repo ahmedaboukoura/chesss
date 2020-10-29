@@ -1,12 +1,25 @@
 package chess;
-
+/**
+ * 
+ * @author Sean Murphy
+ *
+ * Each box on our board needs to hold some values for us, so we store the x and y value
+ *  along with the piece a value called yer which we use to determine if the piece moved
+ */
 public class Box {
 
+	
 	int x;
 	int yer;
 	int y;
 	Piece cPiece;
 
+	/**
+	 * Checks to see if a board pieces is black or white when it is an empty square
+	 * 
+	 * @return
+	 */
+	
 	public boolean isBlack() {
 		if(y%2==0) {
 			if(x%2==1) {
@@ -19,6 +32,11 @@ public class Box {
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * Takes Pieces and turns them into Strings to output when printing the board
+	 */
 	
 	public String toString() {
 		if(cPiece instanceof Rook) {

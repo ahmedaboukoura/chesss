@@ -1,11 +1,29 @@
 package chess;
+/**
+ * @author Sean Murphy
+ * @author Ahmed Aboukoura
+ * 
+ * King extends Piece and has functions to initialize and check move validity,
+ * 		including special cases like castling
+ */
 
 public class King extends Piece{
+	
+	/**
+	 * initializes a new kings of either white or black
+	 * @param t
+	 */
 	
 	public King(boolean t) {
 		super.white = t;
 	}
-	
+	/**
+	 * 
+	 * Checks to see if the kings move is valid,
+	 * 	in this case by checking the surrounding spots
+	 * 	
+	 * note that this is ONLY for checking movement legality, not validity or the bounds
+	 */
 	@Override
 	public boolean legalMove(String str) {
 		
@@ -23,6 +41,12 @@ public class King extends Piece{
 		}
 		return false;
 	}
+	
+	/**
+	 * Checks for possible castles, can only happen if neither piece has moved
+	 * @param str
+	 * @return
+	 */
 	
 	public boolean castle(String str) {
 	

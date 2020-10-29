@@ -2,7 +2,25 @@ package chess;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
-
+/**
+ * 
+ * 
+ * @author Sean Murphy
+ * @author Ahmed 
+ *
+ *	Our Chess game uses a Board and Pieces to implement the popular game
+ * White being first, the main method prompts players on their turn after
+ *  displaying a visual of the gameboard
+ *  We then encrypt the string to interpretable data,
+ *  	determine if the move is acceptable,
+ *  		and then makes the move or asks for another if it is not valid
+ *  	This happens until one player puts another in "checkMate"
+ *  	which is a function we implement in the Board class
+ *  
+ *  	Each piece has its own class in which its legal movement is defined,
+ *  		and in some cases special scenarios like promotion and castling are dealt with accordingly
+ *
+ */
  
 public class Chess {
 	
@@ -26,7 +44,7 @@ public class Chess {
 					if(game.checkMate(kingLoc, true)) {
 						System.out.println();
 						System.out.println("Checkmate");
-						System.out.println("Black Wins!\n");
+						System.out.println("Black Wins\n");
 						break;
 					}
 				}
@@ -62,7 +80,7 @@ public class Chess {
 					continue;
 				}if(tempStr.equals("resign")) {
 					System.out.println();
-					System.out.println("Black Wins!\n");
+					System.out.println("Black Wins\n");
 					break;
 				}
 				
@@ -166,7 +184,7 @@ public class Chess {
 				if(game.checkCheck(kingLoc, false)) {
 					if(game.checkMate(kingLoc, false)) {
 						System.out.println("Checkmate");
-						System.out.println("White Wins!\n");
+						System.out.println("White Wins\n");
 						break;
 					}
 					System.out.println("Check\n");
@@ -184,7 +202,7 @@ public class Chess {
 					if(game.checkMate(kingLoc, true)) {
 						System.out.println();
 						System.out.println("Checkmate");
-						System.out.println("White Wins!\n");
+						System.out.println("White Wins\n");
 						break;
 					}
 				}
@@ -217,7 +235,7 @@ public class Chess {
 				
 				if(tempStr.equals("resign")) {
 					System.out.println();
-					System.out.println("White Wins!\n");
+					System.out.println("White Wins\n");
 					break;
 				}
 				
@@ -324,7 +342,7 @@ public class Chess {
 				if(game.checkCheck(kingLoc, true)) {
 					if(game.checkMate(kingLoc, true)) {
 						System.out.println("Checkmate");
-						System.out.println("Black Wins!\n");
+						System.out.println("Black Wins\n");
 						break;
 					}
 					System.out.println("Check\n");
@@ -342,21 +360,33 @@ public class Chess {
 		}
 	
 	}
-	public static String encrypt(String raw) {
-		StringTokenizer stk = new StringTokenizer(raw); 
+	
+	
+	/**
+	 * Encrypt receives the string as a form like "e7 e5"
+	 *  and then returns a string in the form like "46 44" 
+	 *     where the return string is formated like x1y1_x2y2
+	 *
+	 * 
+	 * @param str0 is the original string received 
+	 * @return a string formatted with the first char being the x index and second being the y index
+	 */
+	
+	public static String encrypt(String str0) {
+		StringTokenizer stk = new StringTokenizer(str0); 
 		boolean special=false;
 		String token = "";
 		String str="";
-		if(raw.equals("resign")) {
+		if(str0.equals("resign")) {
 			return "resign";
 		}
-		if(raw.equals("draw?")) {
+		if(str0.equals("draw?")) {
 			return "draw";
 		}
 		for(int i=0; stk.hasMoreTokens(); i++) {
 			token=stk.nextToken();
 			if(i<2 ) {
-				if(token.length()!=2 && !raw.equals("draw")) {
+				if(token.length()!=2 && !str0.equals("draw")) {
 					return "Invalid string";
 				}
 				switch (token.charAt(0)) {

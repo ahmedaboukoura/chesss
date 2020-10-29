@@ -1,11 +1,28 @@
 package chess;
+/**
+ * @author Sean Murphy
+ * @author Ahmed Aboukoura
+ * 
+ * Knight extends Piece and has functions to initialize and check move validity
+ */
 
 public class Knight extends Piece{
 	
+	/**
+	 * @param t  allows us to define a Knight of a certain color
+	 */
 	Knight(boolean t) {
 		super.white = t;
 	}
 
+	/**
+	 * 
+	 * legalMove checks the validity of a move in terms of a pieces defined movement,
+	 *  in this case checking offset of x and y which should be 1 and 2 or 2 and 1
+	 *  
+	 *  note that we check the validity of the move in other ways too, this method ONLY covers movement
+	 * 
+	 */
 	
 	public boolean legalMove(String str) {
 		
