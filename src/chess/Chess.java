@@ -372,6 +372,9 @@ public class Chess {
 	 * @return a string formatted with the first char being the x index and second being the y index
 	 */
 	
+	
+	
+	
 	public static String encrypt(String str0) {
 		StringTokenizer stk = new StringTokenizer(str0); 
 		boolean special=false;
