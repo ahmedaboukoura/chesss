@@ -241,15 +241,18 @@ public class Chess {
 				if(game.game[y1][x1].cPiece instanceof Knight) {
 					game.move(tempStr);
 					
-				}
-				if(!game.ifBlocked(tempStr)) {
+				}else if(!game.ifBlocked(tempStr)) {
 					game.move(tempStr);
-					
-				}if(game.ifBlocked(tempStr)) {
+					//tity
+				}else if(game.ifBlocked(tempStr)) {
 					System.out.println();
 					System.out.println("Illegal move, try again\n");
 					continue;
+				}else {
+					System.out.println();
+				System.out.println("Illegal move, try again\n");
 				}
+				
 				
 				System.out.println();
 				kingLoc = game.findKing(true);
